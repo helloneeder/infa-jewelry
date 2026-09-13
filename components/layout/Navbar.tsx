@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -38,10 +38,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
     setActiveDropdown(null);
-  }, [pathname]);
+  }, []);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -50,7 +50,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0" onClick={closeMenu}>
             <span className="text-2xl lg:text-3xl font-serif tracking-widest text-dark-gray hover:text-champagne-gold transition-colors">
               LUMI
             </span>
@@ -118,6 +118,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2 hover:text-champagne-gold transition-colors"
+              aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
@@ -143,6 +144,7 @@ export default function Navbar() {
                 className={`block py-3 text-sm tracking-wide border-b border-champagne-gold/10 ${
                   pathname === link.href ? 'text-champagne-gold' : 'text-dark-gray'
                 }`}
+                onClick={closeMenu}
               >
                 {link.label}
               </Link>
@@ -155,6 +157,7 @@ export default function Navbar() {
                       className={`block py-2 text-sm ${
                         pathname === child.href ? 'text-champagne-gold' : 'text-medium-gray'
                       }`}
+                      onClick={closeMenu}
                     >
                       {child.label}
                     </Link>

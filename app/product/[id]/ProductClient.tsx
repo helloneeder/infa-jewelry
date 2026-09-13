@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+
 import ProductCard from '@/components/product/ProductCard';
 import { Product } from '@/types';
 import { getProducts } from '@/lib/products';
