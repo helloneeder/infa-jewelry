@@ -62,7 +62,7 @@ export default function Footer() {
             {/* Brand */}
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-serif tracking-widest text-champagne-gold mb-4">
-                LUMI
+                INFA
               </h2>
               <p className="text-cream-white/70 text-sm leading-relaxed mb-6 max-w-md">
                 以優雅設計點綴日常，每件珠寶都訴說著獨特的故事。
@@ -145,7 +145,7 @@ export default function Footer() {
         <div className="py-6 border-t border-cream-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-xs text-cream-white/40">
-              © {new Date().getFullYear()} LUMI 輕珠寶. All rights reserved.
+              © {new Date().getFullYear()} INFA 輕珠寶. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link href="#" className="text-xs text-cream-white/40 hover:text-champagne-gold transition-colors">

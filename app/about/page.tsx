@@ -11,7 +11,7 @@ export default function AboutPage() {
         <div className="relative h-96">
           <img
             src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=1920&h=600&fit=crop"
-            alt="關於 LUMI"
+            alt="關於 INFA"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-dark-gray/60 flex items-center justify-center">
@@ -29,16 +29,16 @@ export default function AboutPage() {
             
             <div className="space-y-6 text-medium-gray leading-relaxed">
               <p>
-                LUMI 源於對「光」的追求，如同珠寶在光線下展現的璀璨光芒，
-                我們相信每個人都有屬於自己獨特的光彩。品牌名稱 LUMI 源自於「Light」，
-                代表著光明、希望與優雅。
+                INFA 堅持「精緻而雋永」的品牌理念，
+                我們相信每一件珠寶都應當是能夠傳承的匠心之作，
+                見證生活中每個重要時刻。
               </p>
               <p>
-                成立於 2020 年，LUMI 致力於打造高品質輕珠寶，將優雅設計融入日常穿戴，
+                成立於 2020 年，INFA 致力於打造高品質輕珠寶，將優雅設計融入日常穿戴，
                 讓珠寶不再是特殊場合的專屬，而是能夠每天陪伴的美好存在。
               </p>
               <p>
-                每一件 LUMI 作品都經過嚴格的品質把關，從選材到成品，
+                每一件 INFA 作品都經過嚴格的品質把關，從選材到成品，
                 堅持手工打造的溫度與細節。我們相信，真正的奢華不在於價格，
                 而在於每一個細節的用心。
               </p>

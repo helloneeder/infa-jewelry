@@ -9,7 +9,7 @@ export default function HeroBanner() {
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1920&h=1080&fit=crop"
-          alt="LUMI Jewelry"
+          alt="INFA Jewelry"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-cream-white/92 via-cream-white/70 to-cream-white/30" />

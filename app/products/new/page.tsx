@@ -13,7 +13,7 @@ export default function NewProductsPage() {
         <ProductList
           products={products}
           title="新品上市"
-          description="LUMI 最新設計系列，為你的日常增添新意與光芒"
+          description="INFA 最新設計系列，為你的日常增添新意與光芒"
         />
       </main>
       <Footer />

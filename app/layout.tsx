@@ -31,8 +31,8 @@ const notoSerifTC = Noto_Serif_TC({
 });
 
 export const metadata: Metadata = {
-  title: "LUMI | 輕珠寶",
-  description: "LUMI 輕珠寶 - 以優雅設計點綴日常，每件珠寶都訴說著獨特的故事",
+  title: "INFA | 輕珠寶",
+  description: "INFA 輕珠寶 - 以優雅設計點綴日常，每件珠寶都訴說著獨特的故事",
   keywords: "輕珠寶, 項鏈, 手鏈, 戒指, 耳環, 優雅, 時尚",
 };
 

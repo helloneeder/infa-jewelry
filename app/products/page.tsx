@@ -13,7 +13,7 @@ export default function ProductsPage() {
         <ProductList
           products={products}
           title="全部產品"
-          description="探索 LUMI 全系列輕珠寶，找到屬於你的獨特風格"
+          description="探索 INFA 全系列輕珠寶，找到屬於你的獨特風格"
         />
       </main>
       <Footer />

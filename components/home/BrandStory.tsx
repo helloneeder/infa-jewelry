@@ -7,7 +7,7 @@ export default function BrandStory() {
           <div className="relative">
             <img
               src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=800&h=1000&fit=crop"
-              alt="LUMI Brand Story"
+              alt="INFA Brand Story"
               className="w-full h-auto rounded-sm shadow-2xl"
             />
           </div>
@@ -22,15 +22,15 @@ export default function BrandStory() {
             </h2>
             <div className="space-y-4 text-cream-white/80 leading-relaxed text-sm lg:text-base">
               <p>
-                LUMI 源於對光的追求，如同珠寶在光線下展現的璀璨光芒，
+                INFA 堅持「精緻而雋永」的品牌理念，
                 我們相信每個人都有屬於自己獨特的光彩。
               </p>
               <p>
-                成立於 2020 年，LUMI 致力於打造高品質輕珠寶，
+                成立以來，INFA 致力於打造高品質輕珠寶，
                 將優雅設計融入日常穿戴，讓珠寶不再是特殊場合的專屬。
               </p>
               <p>
-                每一件 LUMI 作品都經過嚴格的品質把關，
+                每一件 INFA 作品都經過嚴格的品質把關，
                 從選材到成品，堅持手工打造的溫度與細節。
               </p>
             </div>

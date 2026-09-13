@@ -52,7 +52,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0" onClick={closeMenu}>
             <span className="text-2xl lg:text-3xl font-serif tracking-widest text-dark-gray hover:text-champagne-gold transition-colors">
-              LUMI
+              INFA
             </span>
           </Link>
 
