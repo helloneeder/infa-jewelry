@@ -12,8 +12,8 @@ export default function ProductsPage() {
       <main className="flex-grow">
         <ProductList
           products={products}
-          title="全部產品"
-          description="探索 INFA 全系列輕珠寶，找到屬於你的獨特風格"
+          title="全部产品"
+          description="探索 INFA 全系列轻珠宝，找到屬于你的独特风格"
         />
       </main>
       <Footer />

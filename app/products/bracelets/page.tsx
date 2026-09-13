@@ -12,8 +12,8 @@ export default function BraceletsPage() {
       <main className="flex-grow">
         <ProductList
           products={products}
-          title="手鏈系列"
-          description="細緻的手鏈設計，點綴手腕的優雅風采"
+          title="手链系列"
+          description="細緻的手链设计，點綴手腕的优雅風采"
         />
       </main>
       <Footer />

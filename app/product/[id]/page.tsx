@@ -30,9 +30,9 @@ export default function ProductPage({ params }: ProductPageProps) {
         <div className="bg-cream-white border-b border-champagne-gold/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <nav className="text-sm text-medium-gray">
-              <Link href="/" className="hover:text-champagne-gold">首頁</Link>
+              <Link href="/" className="hover:text-champagne-gold">首页</Link>
               <span className="mx-2">/</span>
-              <Link href="/products" className="hover:text-champagne-gold">產品系列</Link>
+              <Link href="/products" className="hover:text-champagne-gold">产品系列</Link>
               <span className="mx-2">/</span>
               <span className="text-dark-gray">{product.name}</span>
             </nav>

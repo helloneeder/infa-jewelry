@@ -9,7 +9,7 @@ import Footer from '@/components/layout/Footer';
 const initialCartItems = [
   {
     id: '1',
-    name: '星光璀璨項鏈',
+    name: '星光璀璨项链',
     nameEn: 'Stellar Glow Necklace',
     price: 2680,
     image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300&h=300&fit=crop',
@@ -17,7 +17,7 @@ const initialCartItems = [
   },
   {
     id: '2',
-    name: '月光珍珠手鏈',
+    name: '月光珍珠手链',
     nameEn: 'Moonlight Pearl Bracelet',
     price: 1980,
     image: 'https://images.unsplash.com/photo-1611652022419-a9419f3432e2?w=300&h=300&fit=crop',
@@ -52,7 +52,7 @@ export default function CartPage() {
         {/* Page Header */}
         <div className="bg-dark-gray text-cream-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl lg:text-4xl font-serif">購物車</h1>
+            <h1 className="text-3xl lg:text-4xl font-serif">购物车</h1>
           </div>
         </div>
 
@@ -120,7 +120,7 @@ export default function CartPage() {
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    繼續購物
+                    继续购物
                   </Link>
                 </div>
               </div>
@@ -128,27 +128,27 @@ export default function CartPage() {
               {/* Order Summary */}
               <div className="lg:col-span-1">
                 <div className="bg-white p-6 rounded-sm shadow-sm sticky top-24">
-                  <h2 className="text-xl font-serif text-dark-gray mb-6">訂單摘要</h2>
+                  <h2 className="text-xl font-serif text-dark-gray mb-6">订单摘要</h2>
                   
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between text-medium-gray">
-                      <span>小計</span>
+                      <span>小计</span>
                       <span>NT$ {subtotal.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between text-medium-gray">
-                      <span>運費</span>
-                      <span>{shipping === 0 ? '免運' : `NT$ ${shipping}`}</span>
+                      <span>运费</span>
+                      <span>{shipping === 0 ? '包邮' : `NT$ ${shipping}`}</span>
                     </div>
                     {subtotal < 2000 && (
                       <p className="text-xs text-champagne-gold">
-                        再購 NT$ {(2000 - subtotal).toLocaleString()} 即可享免運優惠
+                        再購 NT$ {(2000 - subtotal).toLocaleString()} 即可享包邮优惠
                       </p>
                     )}
                   </div>
 
                   <div className="border-t border-champagne-gold/20 pt-4 mb-6">
                     <div className="flex justify-between items-center">
-                      <span className="text-lg font-medium text-dark-gray">總計</span>
+                      <span className="text-lg font-medium text-dark-gray">总计</span>
                       <span className="text-2xl font-serif text-champagne-gold">
                         NT$ {total.toLocaleString()}
                       </span>
@@ -156,13 +156,13 @@ export default function CartPage() {
                   </div>
 
                   <button className="w-full py-4 bg-champagne-gold text-cream-white text-sm tracking-wider hover:bg-champagne-gold-dark transition-all duration-300 hover:shadow-lg mb-4">
-                    前往結帳
+                    前往结账
                   </button>
 
                   <div className="text-xs text-medium-gray text-center space-y-2">
                     <p>✓ 7 天鑑賞期</p>
-                    <p>✓ 滿 NT$ 2,000 享免運</p>
-                    <p>✓ 精美品牌包裝</p>
+                    <p>✓ 滿 NT$ 2,000 享包邮</p>
+                    <p>✓ 精美品牌包装</p>
                   </div>
                 </div>
               </div>
@@ -173,13 +173,13 @@ export default function CartPage() {
               <svg className="w-24 h-24 text-champagne-gold/30 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-              <h2 className="text-2xl font-serif text-dark-gray mb-4">購物車是空的</h2>
-              <p className="text-medium-gray mb-8">開始選購，為日常增添光彩</p>
+              <h2 className="text-2xl font-serif text-dark-gray mb-4">购物车是空的</h2>
+              <p className="text-medium-gray mb-8">開始选购，为日常增添光彩</p>
               <Link
                 href="/products"
                 className="inline-flex items-center px-8 py-3 bg-champagne-gold text-cream-white text-sm tracking-wider hover:bg-champagne-gold-dark transition-all duration-300"
               >
-                前往選購
+                前往选购
               </Link>
             </div>
           )}

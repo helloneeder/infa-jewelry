@@ -15,7 +15,7 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('感謝您的來信，我們會盡快與您聯繫！');
+    alert('感谢您的来信，我们會盡快与您联系！');
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
   };
 
@@ -26,7 +26,7 @@ export default function ContactPage() {
         {/* Page Header */}
         <div className="bg-dark-gray text-cream-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl lg:text-4xl font-serif">聯絡我們</h1>
+            <h1 className="text-3xl lg:text-4xl font-serif">联系我们</h1>
           </div>
         </div>
 
@@ -34,10 +34,10 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl font-serif text-dark-gray mb-8">與我們聯繫</h2>
+              <h2 className="text-2xl font-serif text-dark-gray mb-8">与我们联系</h2>
               <p className="text-medium-gray leading-relaxed mb-8">
-                有任何問題或建議，歡迎隨時與我們聯繫。
-                客服人員將於 1-2 個工作天內回覆您。
+                有任何问题或建議，歡迎隨時与我们联系。
+                客服人員将于 1-2 个工作日内回复您。
               </p>
 
               <div className="space-y-6">
@@ -49,9 +49,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-medium text-dark-gray mb-1">門市資訊</h3>
-                    <p className="text-sm text-medium-gray">台北市大安區復興南路一段 100 號</p>
-                    <p className="text-sm text-medium-gray">捷運大安站 2 號出口步行 3 分鐘</p>
+                    <h3 className="font-medium text-dark-gray mb-1">门店信息</h3>
+                    <p className="text-sm text-medium-gray">台北市大安區復興南路一段 100 号</p>
+                    <p className="text-sm text-medium-gray">地铁大安站 2 号出口步行 3 分钟</p>
                   </div>
                 </div>
 
@@ -62,7 +62,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-medium text-dark-gray mb-1">營業時間</h3>
+                    <h3 className="font-medium text-dark-gray mb-1">营业时间</h3>
                     <p className="text-sm text-medium-gray">星期一至星期六 11:00 - 20:00</p>
                     <p className="text-sm text-medium-gray">星期日 12:00 - 18:00</p>
                   </div>
@@ -75,9 +75,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-medium text-dark-gray mb-1">客服電話</h3>
+                    <h3 className="font-medium text-dark-gray mb-1">客服电话</h3>
                     <p className="text-sm text-medium-gray">02-2712-1234</p>
-                    <p className="text-sm text-medium-gray">服務時間 10:00 - 18:00</p>
+                    <p className="text-sm text-medium-gray">服务時間 10:00 - 18:00</p>
                   </div>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-sm text-dark-gray mb-2">
-                      電子郵件 <span className="text-red-400">*</span>
+                      電子邮件 <span className="text-red-400">*</span>
                     </label>
                     <input
                       type="email"
@@ -115,7 +115,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm text-dark-gray mb-2">聯絡電話</label>
+                    <label className="block text-sm text-dark-gray mb-2">联系电话</label>
                     <input
                       type="tel"
                       value={formData.phone}
@@ -125,7 +125,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-sm text-dark-gray mb-2">
-                      主旨 <span className="text-red-400">*</span>
+                      主题 <span className="text-red-400">*</span>
                     </label>
                     <select
                       required
@@ -133,10 +133,10 @@ export default function ContactPage() {
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="w-full px-4 py-3 border border-champagne-gold/30 rounded-sm focus:outline-none focus:border-champagne-gold bg-transparent"
                     >
-                      <option value="">請選擇</option>
-                      <option value="product">商品諮詢</option>
-                      <option value="order">訂單問題</option>
-                      <option value="return">退換貨</option>
+                      <option value="">请选择</option>
+                      <option value="product">商品咨询</option>
+                      <option value="order">订单问题</option>
+                      <option value="return">退换货</option>
                       <option value="other">其他</option>
                     </select>
                   </div>
@@ -144,7 +144,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-sm text-dark-gray mb-2">
-                    訊息內容 <span className="text-red-400">*</span>
+                    消息内容 <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     required
@@ -159,7 +159,7 @@ export default function ContactPage() {
                   type="submit"
                   className="w-full py-4 bg-champagne-gold text-cream-white text-sm tracking-wider hover:bg-champagne-gold-dark transition-all duration-300 hover:shadow-lg"
                 >
-                  寄出訊息
+                  寄出消息
                 </button>
               </form>
             </div>

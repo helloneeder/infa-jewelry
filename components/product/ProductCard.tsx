@@ -60,10 +60,10 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Product Info */}
       <div className="space-y-1.5">
         <p className="text-xs text-champagne-gold tracking-wider">
-          {product.category === 'necklaces' && '項鏈'}
-          {product.category === 'bracelets' && '手鏈'}
+          {product.category === 'necklaces' && '项链'}
+          {product.category === 'bracelets' && '手链'}
           {product.category === 'rings' && '戒指'}
-          {product.category === 'earrings' && '耳環'}
+          {product.category === 'earrings' && '耳环'}
         </p>
         <Link href={`/product/${product.id}`}>
           <h3 className="text-base lg:text-lg font-serif text-dark-gray group-hover:text-champagne-gold transition-colors line-clamp-1">

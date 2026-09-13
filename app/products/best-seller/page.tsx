@@ -12,8 +12,8 @@ export default function BestSellersPage() {
       <main className="flex-grow">
         <ProductList
           products={products}
-          title="熱賣商品"
-          description="最受歡迎的經典之作，顧客首選推薦，不容錯過"
+          title="热卖商品"
+          description="最受欢迎的经典之作，顾客首选推荐，不容错过"
         />
       </main>
       <Footer />

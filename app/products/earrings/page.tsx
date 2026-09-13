@@ -12,8 +12,8 @@ export default function EarringsPage() {
       <main className="flex-grow">
         <ProductList
           products={products}
-          title="耳環系列"
-          description="輕盈閃耀的耳環，為整體造型畫龍點睛"
+          title="耳环系列"
+          description="轻盈闪耀的耳环，为整体造型画龙点睛"
         />
       </main>
       <Footer />

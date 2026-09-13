@@ -18,8 +18,8 @@ export default function Home() {
         <HeroBanner />
         
         <ProductSection
-          title="熱賣商品"
-          subtitle="最受歡迎的經典之作，顧客首選推薦"
+          title="热卖商品"
+          subtitle="最受欢迎的经典之作，顾客首选推荐"
           products={bestSellers}
           viewAllHref="/products/best-seller"
         />
@@ -28,7 +28,7 @@ export default function Home() {
         
         <ProductSection
           title="新品上市"
-          subtitle="最新設計系列，為你的日常增添新意"
+          subtitle="最新设计系列，为你的日常增添新意"
           products={newProducts}
           viewAllHref="/products/new"
         />

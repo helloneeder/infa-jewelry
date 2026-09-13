@@ -1,25 +1,18 @@
 import Link from 'next/link';
 
 const footerLinks = {
-  shop: [
-    { label: '全部產品', href: '/products' },
-    { label: '新品上市', href: '/products/new' },
-    { label: '熱賣商品', href: '/products/best-seller' },
-    { label: '項鏈', href: '/products/necklaces' },
-    { label: '手鏈', href: '/products/bracelets' },
-    { label: '戒指', href: '/products/rings' },
-    { label: '耳環', href: '/products/earrings' },
-  ],
+  // V1 隐藏产品入口，V2 上线后恢复
+  // shop: [...]
   about: [
     { label: '品牌故事', href: '/about' },
-    { label: '材質介紹', href: '/about#materials' },
-    { label: '保養說明', href: '/about#care' },
+    { label: '材质介绍', href: '/about#materials' },
+    { label: '保养说明', href: '/about#care' },
   ],
   support: [
-    { label: '配送資訊', href: '/shipping' },
-    { label: '退換貨政策', href: '/shipping#returns' },
-    { label: '常見問題', href: '/shipping#faq' },
-    { label: '聯絡我們', href: '/contact' },
+    { label: '配送信息', href: '/shipping' },
+    { label: '退换货政策', href: '/shipping#returns' },
+    { label: '常见问题', href: '/shipping#faq' },
+    { label: '联系我们', href: '/contact' },
   ],
 };
 
@@ -82,29 +75,11 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Shop Links */}
-            <div>
-              <h3 className="text-sm font-medium tracking-wider text-champagne-gold mb-4">
-                產品選購
-              </h3>
-              <ul className="space-y-3">
-                {footerLinks.shop.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-cream-white/60 hover:text-champagne-gold transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+            {/* V1 隐藏产品选购，V2 上线后恢复 */}
             {/* About Links */}
             <div>
               <h3 className="text-sm font-medium tracking-wider text-champagne-gold mb-4">
-                關於品牌
+                关于品牌
               </h3>
               <ul className="space-y-3">
                 {footerLinks.about.map((link) => (
@@ -123,7 +98,7 @@ export default function Footer() {
             {/* Support Links */}
             <div>
               <h3 className="text-sm font-medium tracking-wider text-champagne-gold mb-4">
-                客戶服務
+                客户服务
               </h3>
               <ul className="space-y-3">
                 {footerLinks.support.map((link) => (
@@ -145,14 +120,14 @@ export default function Footer() {
         <div className="py-6 border-t border-cream-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-xs text-cream-white/40">
-              © {new Date().getFullYear()} INFA 輕珠寶. All rights reserved.
+              © {new Date().getFullYear()} INFA 轻珠宝. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link href="#" className="text-xs text-cream-white/40 hover:text-champagne-gold transition-colors">
-                隱私權政策
+                隐私政策
               </Link>
               <Link href="#" className="text-xs text-cream-white/40 hover:text-champagne-gold transition-colors">
-                使用條款
+                使用条款
               </Link>
             </div>
           </div>

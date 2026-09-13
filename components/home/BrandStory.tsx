@@ -18,20 +18,20 @@ export default function BrandStory() {
               BRAND STORY
             </p>
             <h2 className="text-2xl lg:text-3xl xl:text-4xl font-serif mb-6">
-              我們的故事
+              我们的故事
             </h2>
             <div className="space-y-4 text-cream-white/80 leading-relaxed text-sm lg:text-base">
               <p>
-                INFA 堅持「精緻而雋永」的品牌理念，
-                我們相信每個人都有屬於自己獨特的光彩。
+                INFA 堅持「精致而隽永」的品牌理念，
+                我们相信每个人都有屬于自己独特的光彩。
               </p>
               <p>
-                成立以來，INFA 致力於打造高品質輕珠寶，
-                將優雅設計融入日常穿戴，讓珠寶不再是特殊場合的專屬。
+                成立以來，INFA 致力于打造高品质轻珠宝，
+                将优雅设计融入日常穿戴，让珠宝不再是特殊场合的专属。
               </p>
               <p>
-                每一件 INFA 作品都經過嚴格的品質把關，
-                從選材到成品，堅持手工打造的溫度與細節。
+                每一件 INFA 作品都經過严格的品质把关，
+                从选材到成品，堅持手工打造的温度与细节。
               </p>
             </div>
             <div className="mt-10 flex items-center gap-8 lg:gap-12">
@@ -41,11 +41,11 @@ export default function BrandStory() {
               </div>
               <div className="text-center">
                 <p className="text-2xl lg:text-3xl font-serif text-champagne-gold">10K+</p>
-                <p className="text-xs text-cream-white/60 mt-1">滿意顧客</p>
+                <p className="text-xs text-cream-white/60 mt-1">滿意顾客</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl lg:text-3xl font-serif text-champagne-gold">200+</p>
-                <p className="text-xs text-cream-white/60 mt-1">獨家設計</p>
+                <p className="text-xs text-cream-white/60 mt-1">独家设计</p>
               </div>
             </div>
           </div>

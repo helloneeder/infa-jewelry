@@ -12,8 +12,8 @@ interface ProductListProps {
 
 const sortOptions = [
   { label: '預設排序', value: 'default' },
-  { label: '價格：低到高', value: 'price-asc' },
-  { label: '價格：高到低', value: 'price-desc' },
+  { label: '价格：低到高', value: 'price-asc' },
+  { label: '价格：高到低', value: 'price-desc' },
   { label: '最新上架', value: 'newest' },
 ];
 
@@ -77,7 +77,7 @@ export default function ProductList({ products, title, description }: ProductLis
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-medium-gray">該分類尚無商品</p>
+            <p className="text-medium-gray">該分类尚無商品</p>
           </div>
         )}
       </div>

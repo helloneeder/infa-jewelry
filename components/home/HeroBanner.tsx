@@ -18,15 +18,15 @@ export default function HeroBanner() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-xl lg:max-w-2xl hero-fade-in">
-          <p className="text-champagne-gold tracking-[0.25em] text-xs mb-4">精緻珠寶 · 永恆之美</p>
+          <p className="text-champagne-gold tracking-[0.25em] text-xs mb-4">精致珠宝 · 永恒之美</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-deep-charcoal leading-tight mb-6">
-            璀璨永恆
+            璀璨永恒
             <br />
-            <span className="text-champagne-gold">始於匠心</span>
+            <span className="text-champagne-gold">始于匠心</span>
           </h1>
           <p className="text-lg text-warm-gray mb-8 max-w-lg leading-relaxed">
-            每一件珠寶，都是時光與技藝的結晶。
-            我們以匠心雕琢，只為綻放你獨一無二的光芒。
+            每一件珠宝，都是時光与技藝的結晶。
+            我们以匠心雕琢，只为綻放你独一无二的光芒。
           </p>
           <div className="flex gap-4">
             <Link

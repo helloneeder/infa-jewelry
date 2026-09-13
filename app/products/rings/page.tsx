@@ -13,7 +13,7 @@ export default function RingsPage() {
         <ProductList
           products={products}
           title="戒指系列"
-          description="指尖上的璀璨光芒，訴說獨特的個人風格"
+          description="指尖上的璀璨光芒，诉说独特的个人风格"
         />
       </main>
       <Footer />

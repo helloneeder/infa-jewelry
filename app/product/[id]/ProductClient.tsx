@@ -33,10 +33,10 @@ export default function ProductClient({ product }: ProductClientProps) {
         <div>
           <div className="mb-6">
             <span className="text-champagne-gold text-sm tracking-wider">
-              {product.category === 'necklaces' && '項鏈'}
-              {product.category === 'bracelets' && '手鏈'}
+              {product.category === 'necklaces' && '项链'}
+              {product.category === 'bracelets' && '手链'}
               {product.category === 'rings' && '戒指'}
-              {product.category === 'earrings' && '耳環'}
+              {product.category === 'earrings' && '耳环'}
             </span>
             <h1 className="text-3xl lg:text-4xl font-serif text-dark-gray mt-2 mb-2">
               {product.name}
@@ -54,7 +54,7 @@ export default function ProductClient({ product }: ProductClientProps) {
 
           {/* Quantity */}
           <div className="mb-6">
-            <label className="block text-sm text-dark-gray mb-3">數量</label>
+            <label className="block text-sm text-dark-gray mb-3">数量</label>
             <div className="flex items-center">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -72,7 +72,7 @@ export default function ProductClient({ product }: ProductClientProps) {
                 +
               </button>
               <span className="ml-4 text-sm text-medium-gray">
-                庫存：{product.stock} 件
+                库存：{product.stock} 件
               </span>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function ProductClient({ product }: ProductClientProps) {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <button className="flex-1 py-4 bg-champagne-gold text-cream-white text-sm tracking-wider hover:bg-champagne-gold-dark transition-all duration-300 hover:shadow-lg">
-              加入購物車
+              加入购物车
             </button>
             <button className="flex-1 py-4 border border-dark-gray text-dark-gray text-sm tracking-wider hover:bg-dark-gray hover:text-cream-white transition-all duration-300">
               立即購買
@@ -102,7 +102,7 @@ export default function ProductClient({ product }: ProductClientProps) {
 
           {/* Material */}
           <div className="border-t border-champagne-gold/20 pt-6 mt-6">
-            <h3 className="text-lg font-serif text-dark-gray mb-3">材質</h3>
+            <h3 className="text-lg font-serif text-dark-gray mb-3">材质</h3>
             <p className="text-medium-gray">{product.material}</p>
           </div>
         </div>

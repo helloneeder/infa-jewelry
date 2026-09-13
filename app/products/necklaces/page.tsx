@@ -12,8 +12,8 @@ export default function NecklacesPage() {
       <main className="flex-grow">
         <ProductList
           products={products}
-          title="項鏈系列"
-          description="輕盈優雅的項鏈，為頸間增添迷人光彩"
+          title="项链系列"
+          description="轻盈优雅的项链，为颈间增添迷人光彩"
         />
       </main>
       <Footer />

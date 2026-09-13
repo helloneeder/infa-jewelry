@@ -1,8 +1,8 @@
 const materials = [
   {
-    title: '925 純銀',
+    title: '925 纯银',
     titleEn: 'Sterling Silver',
-    description: '含銀量 92.5%，兼具光澤與耐用性，低敏適合日常佩戴',
+    description: '含銀量 92.5%，兼具光澤与耐用性，低敏適合日常佩戴',
     icon: (
       <svg className="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -12,7 +12,7 @@ const materials = [
   {
     title: '天然珍珠',
     titleEn: 'Natural Pearl',
-    description: '嚴選淡水養殖珍珠，每顆都經過仔細篩選，呈現極致光澤',
+    description: '嚴選淡水養殖珍珠，每顆都經過仔細篩選，呈現极致光澤',
     icon: (
       <svg className="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
@@ -20,9 +20,9 @@ const materials = [
     ),
   },
   {
-    title: '鋯石鑲嵌',
+    title: '锆石镶嵌',
     titleEn: 'Zirconia',
-    description: '高品質鋯石，媲美鑽石的閃耀，閃耀動人的璀璨光芒',
+    description: '高品质锆石，媲美钻石的闪耀，闪耀动人的璀璨光芒',
     icon: (
       <svg className="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -30,9 +30,9 @@ const materials = [
     ),
   },
   {
-    title: '14K 鍍金',
+    title: '14K 镀金',
     titleEn: '14K Gold Plated',
-    description: '厚實鍍金層，不易褪色，長久保持亮麗光澤',
+    description: '厚實镀金層，不易褪色，長久保持亮麗光澤',
     icon: (
       <svg className="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -51,10 +51,10 @@ export default function MaterialSection() {
             MATERIALS
           </p>
           <h2 className="text-2xl lg:text-3xl xl:text-4xl font-serif text-dark-gray mb-3">
-            嚴選材質
+            嚴选材质
           </h2>
           <p className="text-medium-gray text-sm max-w-2xl mx-auto">
-            堅持使用高品質材料，確保每件珠寶都能長久陪伴
+            堅持使用高品质材料，確保每件珠宝都能長久陪伴
           </p>
         </div>
 
