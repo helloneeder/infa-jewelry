@@ -1,33 +1,19 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { label: '首頁', href: '/' },
-  {
-    label: '產品系列',
-    href: '/products',
-    children: [
-      { label: '全部產品', href: '/products' },
-      { label: '新品上市', href: '/products/new' },
-      { label: '熱賣商品', href: '/products/best-seller' },
-      { label: '項鏈', href: '/products/necklaces' },
-      { label: '手鏈', href: '/products/bracelets' },
-      { label: '戒指', href: '/products/rings' },
-      { label: '耳環', href: '/products/earrings' },
-    ],
-  },
+  { label: '首页', href: '/' },
   { label: '品牌故事', href: '/about' },
-  { label: '配送資訊', href: '/shipping' },
-  { label: '聯絡我們', href: '/contact' },
+  { label: '配送信息', href: '/shipping' },
+  { label: '联系我们', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -38,10 +24,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const closeMenu = useCallback(() => {
-    setIsMenuOpen(false);
-    setActiveDropdown(null);
-  }, []);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -59,51 +42,21 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-7">
             {navLinks.map((link) => (
-              <div key={link.href} className="relative group">
-                <Link
-                  href={link.href}
-                  className={`text-sm py-2 ${
-                    pathname === link.href || pathname.startsWith(link.href + '/')
-                      ? 'text-champagne-gold'
-                      : 'text-dark-gray hover:text-champagne-gold'
-                  } transition-colors`}
-                  onMouseEnter={() => link.children && setActiveDropdown(link.href)}
-                  onMouseLeave={() => link.children && setActiveDropdown(null)}
-                >
-                  {link.label}
-                  {link.children && (
-                    <span className="ml-1 text-xs">▼</span>
-                  )}
-                </Link>
-                
-                {link.children && (
-                  <div
-                    className={`absolute top-full left-0 min-w-[160px] bg-cream-white shadow-lg rounded-sm py-2 transition-all duration-200 ${
-                      activeDropdown === link.href ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-                    }`}
-                    onMouseEnter={() => setActiveDropdown(link.href)}
-                    onMouseLeave={() => setActiveDropdown(null)}
-                  >
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={`block px-4 py-2 text-sm ${
-                          pathname === child.href
-                            ? 'text-champagne-gold bg-champagne-gold/5'
-                            : 'text-dark-gray hover:text-champagne-gold hover:bg-champagne-gold/5'
-                        } transition-colors`}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm py-2 ${
+                  pathname === link.href || pathname.startsWith(link.href + '/')
+                    ? 'text-champagne-gold'
+                    : 'text-dark-gray hover:text-champagne-gold'
+                } transition-colors`}
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
 
-          {/* Icons */}
+          {/* Right side - Mobile menu button */}
           <div className="flex items-center space-x-4">
             {/* V1 隐藏购物车，V2 上线后恢复 */}
             {/*
@@ -114,7 +67,8 @@ export default function Navbar() {
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-champagne-gold text-white text-xs rounded-full flex items-center justify-center">
                 0
               </span>
-            </Link>*/}
+            </Link>
+            */}
 
             {/* Mobile Menu Button */}
             <button
@@ -140,33 +94,16 @@ export default function Navbar() {
       }`}>
         <div className="bg-cream-white border-t border-champagne-gold/20 px-4 py-4">
           {navLinks.map((link) => (
-            <div key={link.href}>
-              <Link
-                href={link.href}
-                className={`block py-3 text-sm tracking-wide border-b border-champagne-gold/10 ${
-                  pathname === link.href ? 'text-champagne-gold' : 'text-dark-gray'
-                }`}
-                onClick={closeMenu}
-              >
-                {link.label}
-              </Link>
-              {link.children && (
-                <div className="pl-4">
-                  {link.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className={`block py-2 text-sm ${
-                        pathname === child.href ? 'text-champagne-gold' : 'text-medium-gray'
-                      }`}
-                      onClick={closeMenu}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`block py-3 text-sm tracking-wide border-b border-champagne-gold/10 ${
+                pathname === link.href ? 'text-champagne-gold' : 'text-dark-gray'
+              }`}
+              onClick={closeMenu}
+            >
+              {link.label}
+            </Link>
           ))}
         </div>
       </div>
