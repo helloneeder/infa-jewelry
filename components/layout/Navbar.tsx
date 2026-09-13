@@ -105,6 +105,8 @@ export default function Navbar() {
 
           {/* Icons */}
           <div className="flex items-center space-x-4">
+            {/* V1 隐藏购物车，V2 上线后恢复 */}
+            {/*
             <Link href="/cart" className="relative p-2 hover:text-champagne-gold transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -112,7 +114,7 @@ export default function Navbar() {
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-champagne-gold text-white text-xs rounded-full flex items-center justify-center">
                 0
               </span>
-            </Link>
+            </Link>*/}
 
             {/* Mobile Menu Button */}
             <button

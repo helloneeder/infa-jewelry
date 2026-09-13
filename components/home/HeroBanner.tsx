@@ -30,16 +30,16 @@ export default function HeroBanner() {
           </p>
           <div className="flex gap-4">
             <Link
-              href="/products"
+              href="/about"
               className="px-8 py-3 bg-champagne-gold text-white font-medium hover:bg-gold-deep transition-colors duration-300"
             >
-              探索系列
+              了解品牌
             </Link>
             <Link
-              href="/about"
+              href="/contact"
               className="px-8 py-3 border border-deep-charcoal text-deep-charcoal font-medium hover:bg-deep-charcoal hover:text-white transition-colors duration-300"
             >
-              品牌故事
+              联系我们
             </Link>
           </div>
         </div>
