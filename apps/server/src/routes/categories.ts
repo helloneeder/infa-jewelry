@@ -41,7 +41,7 @@ categoryRoutes.post('/', authenticateToken, (req, res) => {
   `).run(body.name['zh-CN'], body.name['zh-TW'], body.name['en'], body.sort);
 
   const row = db.prepare('SELECT * FROM categories WHERE id = ?').get(result.lastInsertRowid);
-  res.status(201).json(rowToCategory(row));
+  res.status(201).json(ok(rowToCategory(row)));
 });
 
 // Update
