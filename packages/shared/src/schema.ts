@@ -39,12 +39,27 @@ export type CategoryCreateInput = z.infer<typeof CategoryCreateSchema>;
 export const CategoryUpdateSchema = CategoryCreateSchema.partial();
 export type CategoryUpdateInput = z.infer<typeof CategoryUpdateSchema>;
 
+// ========== Asset URL ==========
+// Local storage serves files at `/uploads/<file>` (Nginx reverse proxy); future object
+// storage/CDN returns absolute http(s). Reject javascript:/data: and protocol-
+// relative `//` paths to avoid XSS at attribute/rich-text boundaries.
+export const AssetUrlSchema = z
+  .string()
+  .min(1)
+  .refine(
+    (u) =>
+      /^https?:\/\//i.test(u) ||
+      (/^\/(?!\/)/.test(u) && !u.includes(':')),
+    '只允许 http(s) 绝对 URL 或单个 / 开头的站内路径',
+  );
+export type AssetUrl = z.infer<typeof AssetUrlSchema>;
+
 // ========== Product ==========
 export const ProductStatusSchema = z.enum(['active', 'inactive']);
 export type ProductStatus = z.infer<typeof ProductStatusSchema>;
 
 export const ProductImageSchema = z.object({
-  url: z.string().url(),
+  url: AssetUrlSchema,
   alt: z.string().optional(),
   isMain: z.boolean().default(false),
 });

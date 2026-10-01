@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
 import { LocalizedField } from '@/components/LocalizedField'
+import { ImageUploader } from '@/components/ImageUploader'
 import { useCategories } from '@/lib/categories'
 import { useCreateProduct, useProduct, useUpdateProduct } from '@/lib/products'
 import {
@@ -182,9 +183,10 @@ export default function ProductEditPage() {
 
         <section className="rounded-xl border border-border bg-surface p-6">
           <label className="text-sm font-medium">图片</label>
-          <p className="mt-1 text-xs text-ink-muted">
-            当前 {images.length} 张。上传组件随 /api/upload 接入（M5 后续），现阶段可先保存基本信息。
-          </p>
+          <ImageUploader
+            value={images}
+            onChange={(next) => setValue('images', next, { shouldValidate: true })}
+          />
         </section>
 
         {(create.isError || update.isError) && (

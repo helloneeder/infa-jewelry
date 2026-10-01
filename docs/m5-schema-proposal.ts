@@ -14,7 +14,7 @@
  * 3) 图片衔接现有 ProductImageSchema { url, alt?, isMain }。
  *
  * 已定稿决策（2026-09-14 小问拍板）：
- * - P1 存储：先落服务器本地 uploads/ 目录，URL 走 /media/<file> 静态托管；
+ * - P1 存储：先落服务器本地 uploads/ 目录，URL 走 /uploads/<file> 静态托管；
  *   后期上对象存储时抽一层 StorageService（put/get/delete/url），接口与 schema 不变。
  * - MediaAsset 同时保留 filename（服务端重命名后的存储键）与 originalName
  *   （用户上传时的原始文件名，后台展示用）。
@@ -52,7 +52,7 @@ export const MediaMimeSchema = z.enum([
 export type MediaMime = z.infer<typeof MediaMimeSchema>;
 
 /**
- * 资源 URL：允许站内相对路径（本地存储期为 /media/<file>，前端经代理/反代访问）
+ * 资源 URL：允许站内相对路径（本地存储期为 /uploads/<file>，前端经代理/反代访问）
  * 或绝对 http(s) URL（后期对象存储/CDN）。StorageService 返回什么就存什么。
  * 安全：明确拒绝 javascript:/data: 等伪协议，避免富文本/属性位 XSS。
  */
@@ -65,10 +65,10 @@ export const AssetUrlSchema = z.union([
     .refine((u) => !u.includes(':'), '路径不能包含协议字符'),
 ]);
 
-/** 媒体库文件（落本地 uploads/，URL 走 /media/<file>；未来可换对象存储） */
+/** 媒体库文件（落本地 uploads/，URL 走 /uploads/<file>；未来可换对象存储） */
 export const MediaAssetSchema = z.object({
   id: z.number().int().positive(),
-  url: AssetUrlSchema, // /media/<stored-name>（本地）或 CDN URL（对象存储）
+  url: AssetUrlSchema, // /uploads/<stored-name>（本地）或 CDN URL（对象存储）
   // 服务端重命名后的存储键（同时是物理文件名，禁止用客户端原名直接落盘）
   filename: z.string(),
   // 用户上传时的原始文件名，仅后台展示用，不当存储键、不参与路径拼接
@@ -131,7 +131,7 @@ export const UPLOAD_LIMITS = {
 
 /*
  * 存储抽象（已定）：实现一个 StorageService，本地期把文件写到 uploads/ 并
- * 由 Express 静态托管在 /media/<file>；迁对象存储时只换这一层的 put/remove/url，
+ * 由 Express/Nginx 静态托管在 /uploads/<file>；迁对象存储时只换这一层的 put/remove/url，
  * 路由返回的 MediaAsset 形态保持不变。DB 记录与物理文件同生命周期：
  * 上传成功才建记录；删除时先校验无产品引用，再删文件 + 删记录（失败要回滚/补偿）。
  */
