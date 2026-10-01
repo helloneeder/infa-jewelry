@@ -12,6 +12,7 @@ import {
   ProductCreateSchema,
   type ProductCreateInput,
   type LocalizedText,
+  type ProductImage,
 } from '@infa/shared'
 
 const EMPTY_LOC: LocalizedText = { 'zh-CN': '', 'zh-TW': '', en: '' }
@@ -31,6 +32,7 @@ export default function ProductEditPage() {
     reset,
     watch,
     setValue,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm<ProductCreateInput>({
     resolver: zodResolver(ProductCreateSchema),
@@ -67,6 +69,17 @@ export default function ProductEditPage() {
   const name = watch('name')
   const description = watch('description')
   const images = watch('images') ?? []
+
+  /**
+   * Functional image updater: always computes from the form's CURRENT value via
+   * getValues, not the `images` render snapshot. This avoids a stale-closure bug
+   * where an image uploaded right before save was dropped.
+   */
+  const updateImages = (updater: (prev: ProductImage[]) => ProductImage[]) => {
+    const current = getValues('images') ?? []
+    const next = updater(current)
+    setValue('images', next, { shouldValidate: true, shouldDirty: true })
+  }
 
   const onSubmit = handleSubmit(async (values) => {
     const payload: ProductCreateInput = {
@@ -185,7 +198,7 @@ export default function ProductEditPage() {
           <label className="text-sm font-medium">图片</label>
           <ImageUploader
             value={images}
-            onChange={(next) => setValue('images', next, { shouldValidate: true })}
+            onChange={(updater) => updateImages(updater)}
           />
         </section>
 

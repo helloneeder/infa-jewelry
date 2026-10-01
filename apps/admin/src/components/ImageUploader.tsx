@@ -6,7 +6,8 @@ import type { ProductImage } from '@infa/shared'
 
 interface ImageUploaderProps {
   value: ProductImage[]
-  onChange: (images: ProductImage[]) => void
+  /** Apply a functional change against the form's current image list. */
+  onChange: (updater: (prev: ProductImage[]) => ProductImage[]) => void
   /** Max number of images allowed on this product. */
   max?: number
 }
@@ -44,39 +45,44 @@ export function ImageUploader({ value, onChange, max = 12 }: ImageUploaderProps)
       try {
         const assets = await upload.mutateAsync(files)
         const added: ProductImage[] = assets.map((a) => ({
+          id: a.id,
           url: a.url,
-          alt: a.originalName,
+          alt: a.alt || '',
           isMain: false,
         }))
-        // First-ever image becomes the cover automatically.
-        const next = [...value, ...added]
-        if (!next.some((i) => i.isMain) && next.length > 0) {
-          next[0] = { ...next[0], isMain: true }
-        }
-        onChange(next)
+        // Append to the form's current list; first-ever image becomes cover.
+        onChange((prev) => {
+          const next = [...prev, ...added]
+          if (!next.some((i) => i.isMain) && next.length > 0) {
+            next[0] = { ...next[0], isMain: true }
+          }
+          return next
+        })
       } catch {
         setLocalError('上传失败，请稍后重试')
       }
     },
-    [max, remaining, upload, value, onChange],
+    [max, remaining, upload, onChange],
   )
 
   const setMain = (idx: number) => {
-    onChange(value.map((img, i) => ({ ...img, isMain: i === idx })))
+    onChange((prev) => prev.map((img, i) => ({ ...img, isMain: i === idx })))
   }
 
   const remove = (idx: number) => {
-    const removed = value[idx]
-    const next = value.filter((_, i) => i !== idx)
-    // Promote a new cover if we removed the current one.
-    if (removed.isMain && next.length > 0) {
-      next[0] = { ...next[0], isMain: true }
-    }
-    onChange(next)
+    onChange((prev) => {
+      const removed = prev[idx]
+      const next = prev.filter((_, i) => i !== idx)
+      // Promote a new cover if we removed the current one.
+      if (removed?.isMain && next.length > 0) {
+        next[0] = { ...next[0], isMain: true }
+      }
+      return next
+    })
   }
 
   const updateAlt = (idx: number, alt: string) => {
-    onChange(value.map((img, i) => (i === idx ? { ...img, alt } : img)))
+    onChange((prev) => prev.map((img, i) => (i === idx ? { ...img, alt } : img)))
   }
 
   const busy = upload.isPending

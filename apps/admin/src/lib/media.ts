@@ -1,38 +1,24 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 import { callApi, api } from './api'
-import type { PaginatedData } from '@infa/shared'
+import type {
+  PaginatedData,
+  MediaAsset,
+} from '@infa/shared'
 
 /**
- * Media/upload client. Mirrors the M5 contract in docs/m5-schema-proposal.ts.
- *
- * NOTE (coordination with @infa/server): these types are declared locally until
- * the Media schemas are promoted into packages/shared/src/schema.ts. Keep them
- * in sync; once shared exports MediaAsset/UPLOAD_LIMITS, import from there.
+ * Media/upload client. Mirrors the final server contract (4c861cb):
+ *   POST /api/upload       field `file`  → MediaAsset
+ *   POST /api/upload/many  field `files` → { items: MediaAsset[], count }
+ *   GET/PUT/DELETE /api/media
+ * Types now come from @infa/shared (MediaAssetSchema).
  */
-export type MediaMime = 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp'
 
-export interface MediaAsset {
-  id: number
-  /** Local storage: `/uploads/<file>` (Nginx reverse-proxied); future object storage: absolute http(s) URL. */
-  url: string
-  /** Server-generated storage key / physical file name. */
-  filename: string
-  /** Original client file name, display only. */
-  originalName: string
-  mimeType: MediaMime
-  size: number
-  width?: number
-  height?: number
-  alt?: string
-  createdAt: string
-}
+export type { MediaAsset }
 
 export interface MediaListParams {
   page?: number
   pageSize?: number
-  keyword?: string
-  mimeType?: MediaMime
 }
 
 /** Front-end mirror of the server hard limits; used for pre-flight validation. */
@@ -70,19 +56,19 @@ export function useUploadImage() {
   })
 }
 
-/** POST /api/upload/many — multipart, field name `files[]`; atomic on the server. */
+/** POST /api/upload/many — multipart, field name `files`; atomic on the server. */
 export function useUploadManyImages() {
   const qc = useQueryClient()
   return useMutation({
     mutationFn: async (files: File[]): Promise<MediaAsset[]> => {
       const form = new FormData()
-      files.forEach((f) => form.append('files[]', f))
-      const data = await callApi<{ assets: MediaAsset[] }>(
+      files.forEach((f) => form.append('files', f))
+      const data = await callApi<{ items: MediaAsset[]; count: number }>(
         api.post('/upload/many', form, {
           headers: { 'Content-Type': 'multipart/form-data' },
         }),
       )
-      return data.assets
+      return data.items
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: mediaKeys.all }),
   })
