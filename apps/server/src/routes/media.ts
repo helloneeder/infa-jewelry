@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import multer from 'multer';
+import multer, { MulterError } from 'multer';
 import { getDb } from '../db/index.js';
 import { authenticateToken } from '../middleware/auth.js';
 import { ok, fail } from '../middleware/error.js';
@@ -52,8 +52,27 @@ function isMediaReferenced(mediaId: number): boolean {
   return false;
 }
 
+// 包装 multer 中间件，捕获其错误（如文件超限）返回正确 HTTP 状态
+function multerWrap(multerMiddleware: any) {
+  return (req: any, res: any, next: any) => {
+    multerMiddleware(req, res, (err: any) => {
+      if (err instanceof MulterError) {
+        if (err.code === 'LIMIT_FILE_SIZE') {
+          return res.status(413).json(fail('FILE_TOO_LARGE', '文件超过 5MB 限制'));
+        }
+        if (err.code === 'LIMIT_FILE_COUNT') {
+          return res.status(400).json(fail('TOO_MANY_FILES', '文件数量超限'));
+        }
+        return res.status(400).json(fail('UPLOAD_ERROR', err.message));
+      }
+      if (err) return next(err);
+      next();
+    });
+  };
+}
+
 // ========== 上传：单图 ==========
-uploadRoutes.post('/', authenticateToken, upload.single('file'), async (req, res, next) => {
+uploadRoutes.post('/', authenticateToken, multerWrap(upload.single('file')), async (req, res, next) => {
   try {
     if (!req.file) {
       return res.status(400).json(fail('NO_FILE', '请上传文件'));
@@ -73,12 +92,15 @@ uploadRoutes.post('/', authenticateToken, upload.single('file'), async (req, res
     if (err instanceof UploadError) {
       return res.status(400).json(fail(err.code, err.message));
     }
+    if (err instanceof MulterError && err.code === 'LIMIT_FILE_SIZE') {
+      return res.status(413).json(fail('FILE_TOO_LARGE', '文件超过 5MB 限制'));
+    }
     next(err);
   }
 });
 
 // ========== 上传：批量（原子） ==========
-uploadRoutes.post('/many', authenticateToken, upload.array('files', 20), async (req, res, next) => {
+uploadRoutes.post('/many', authenticateToken, multerWrap(upload.array('files', 20)), async (req, res, next) => {
   const savedUrls: string[] = [];
   try {
     const files = req.files as Express.Multer.File[];
@@ -112,6 +134,9 @@ uploadRoutes.post('/many', authenticateToken, upload.array('files', 20), async (
       for (const url of savedUrls) {
         deleteUploadedFile(url);
       }
+      if (err instanceof MulterError && err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(413).json(fail('FILE_TOO_LARGE', '文件超过 5MB 限制'));
+      }
       throw err;
     }
 
@@ -119,6 +144,9 @@ uploadRoutes.post('/many', authenticateToken, upload.array('files', 20), async (
   } catch (err) {
     if (err instanceof UploadError) {
       return res.status(400).json(fail(err.code, err.message));
+    }
+    if (err instanceof MulterError && err.code === 'LIMIT_FILE_SIZE') {
+      return res.status(413).json(fail('FILE_TOO_LARGE', '文件超过 5MB 限制'));
     }
     next(err);
   }
