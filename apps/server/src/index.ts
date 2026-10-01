@@ -3,18 +3,27 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { initDb } from './db/index.js';
 import { authRoutes } from './routes/auth.js';
 import { productRoutes } from './routes/products.js';
 import { categoryRoutes } from './routes/categories.js';
+import { mediaRoutes, uploadRoutes } from './routes/media.js';
 import { errorHandler } from './middleware/error.js';
 import { ADMIN_COOKIE_NAME } from '@infa/shared';
+import { ensureUploadDir, getUploadDir } from './utils/upload.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
 
 // DB
 initDb();
+
+// Uploads dir
+ensureUploadDir();
 
 // Middleware
 app.use(morgan('dev'));
@@ -29,6 +38,14 @@ app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/media', mediaRoutes);
+app.use('/api/upload', uploadRoutes);
+
+// Static: /uploads
+app.use('/uploads', express.static(getUploadDir(), {
+  maxAge: '7d',
+  fallthrough: true,
+}));
 
 // Health
 app.get('/api/health', (_req, res) => {

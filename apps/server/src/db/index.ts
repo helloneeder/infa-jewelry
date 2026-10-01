@@ -10,7 +10,7 @@ let db: Database.Database;
 export function initDb() {
   const dbPath = process.env.DB_PATH || path.join(__dirname, '../../data/app.db');
   db = new Database(dbPath);
-  db.pragma('journal_mode = WAL');
+  db.pragma('journal_mode = DELETE'); // WSL 下 WAL 有 I/O 问题，生产环境建议改回 WAL
   db.pragma('foreign_keys = ON');
 
   // Admins
@@ -31,6 +31,20 @@ export function initDb() {
       name_zh_tw TEXT NOT NULL DEFAULT '',
       name_en TEXT NOT NULL DEFAULT '',
       sort INTEGER DEFAULT 0,
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    )
+  `);
+
+  // Media assets
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS media (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      url TEXT NOT NULL,
+      filename TEXT NOT NULL,
+      size INTEGER NOT NULL DEFAULT 0,
+      mime_type TEXT NOT NULL DEFAULT '',
+      alt TEXT NOT NULL DEFAULT '',
       created_at TEXT DEFAULT (datetime('now')),
       updated_at TEXT DEFAULT (datetime('now'))
     )

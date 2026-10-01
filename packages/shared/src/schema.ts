@@ -54,11 +54,30 @@ export const AssetUrlSchema = z
   );
 export type AssetUrl = z.infer<typeof AssetUrlSchema>;
 
+// ========== Media Asset ==========
+export const MediaAssetSchema = z.object({
+  id: z.number().int().positive(),
+  url: AssetUrlSchema,
+  filename: z.string(),
+  size: z.number().int().nonnegative(),
+  mimeType: z.string(),
+  alt: z.string().default(''),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+export type MediaAsset = z.infer<typeof MediaAssetSchema>;
+
+export const MediaUpdateSchema = z.object({
+  alt: z.string().default(''),
+});
+export type MediaUpdateInput = z.infer<typeof MediaUpdateSchema>;
+
 // ========== Product ==========
 export const ProductStatusSchema = z.enum(['active', 'inactive']);
 export type ProductStatus = z.infer<typeof ProductStatusSchema>;
 
 export const ProductImageSchema = z.object({
+  id: z.number().int().positive().optional(),
   url: AssetUrlSchema,
   alt: z.string().optional(),
   isMain: z.boolean().default(false),
